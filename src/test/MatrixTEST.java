@@ -5,8 +5,7 @@ import org.junit.Test;
 
 public class MatrixTEST extends TestCase {
 
-    @Test
-    public void determinantTest1() {
+    public void testDeterminantTest1() {
 
         double[][] forMatrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         Matrix matrix = new Matrix(forMatrix);
@@ -14,9 +13,7 @@ public class MatrixTEST extends TestCase {
         double resultWant = 0.0;
         assertEquals(resultFact, resultWant);
     }
-    @Test
-
-    public void determinantTest2() {
+    public void testDeterminantTest2() {
 
         double[][] forMatrix = {{-1, -2, -3}, {-4, -5, -6}, {-7, -8, -9}};
         Matrix matrix = new Matrix(forMatrix);
