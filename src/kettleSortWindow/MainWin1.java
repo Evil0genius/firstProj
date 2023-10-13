@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 
-import static lesson12.KettleSortButtons.*;
 
-public class MainWin extends JFrame{
+public class MainWin1 extends JFrame{
     HashSet<Kettle> kettles2 = new HashSet<>();
 
 
@@ -32,11 +31,11 @@ public class MainWin extends JFrame{
     private JRadioButton radio8 = new JRadioButton("По возрастанию");
     private JRadioButton radio9 = new JRadioButton("По убыванию");
 
-    public MainWin(HashSet<Kettle> kettles){
+    public MainWin1(HashSet<Kettle> kettle){
         super("Вид чайника");
         this.setBounds(100,100,600,300);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        kettles2.addAll(kettles);
+        kettles2.addAll(kettle);
 
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(5,2,2,2));

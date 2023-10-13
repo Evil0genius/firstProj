@@ -1,9 +1,8 @@
 package test;
 
 import junit.framework.TestCase;
-import org.junit.Test;
 
-public class MatrixTEST extends TestCase {
+public class MatrixTestCase extends TestCase {
 
     public void testDeterminantTest1() {
 
