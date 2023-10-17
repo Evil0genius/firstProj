@@ -4,11 +4,8 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<String,Integer> fridge = new HashMap<>();
-        fridge.put("Water", 10);
-        fridge.put("Sugar", 5);
-        fridge.put("Sliva", 2);
-
-        System.out.println(fridge);
+        Double a = 0.0;
+        Double b = (double) -1;
+        System.out.println(a*b);
     }
 }

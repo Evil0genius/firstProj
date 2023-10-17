@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 
-import static lesson12.KettleSortButtons.*;
-
 public class MainWin extends JFrame{
     HashSet<Kettle> kettles2 = new HashSet<>();
 

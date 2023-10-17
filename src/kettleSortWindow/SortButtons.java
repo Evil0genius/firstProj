@@ -3,6 +3,7 @@ package kettleSortWindow;
 
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.TreeSet;
 
 public class SortButtons {
@@ -10,7 +11,7 @@ public class SortButtons {
         TreeSet<Kettle> forSorting = new TreeSet<>(new Comparator<Kettle>() {
             @Override
             public int compare(Kettle o1, Kettle o2) {
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o1.getName().compareTo(o2.getName());
                 }
                 if(o1.getPower() != o2.getPower()){
@@ -34,7 +35,7 @@ public class SortButtons {
         TreeSet<Kettle> forSorting = new TreeSet<>(new Comparator<Kettle>() {
             @Override
             public int compare(Kettle o1, Kettle o2) {
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o2.getName().compareTo(o1.getName());
                 }
                 if(o1.getPower() != o2.getPower()){
@@ -61,7 +62,7 @@ public class SortButtons {
                 if(!o1.getMaterial().equals(o2.getMaterial())){
                     return o1.getMaterial().compareTo(o2.getMaterial());
                 }
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o1.getName().compareTo(o2.getName());
                 }
                 if(o1.getPower() != o2.getPower()){
@@ -86,7 +87,7 @@ public class SortButtons {
                 if(!o1.getMaterial().equals(o2.getMaterial())){
                     return o2.getMaterial().compareTo(o1.getMaterial());
                 }
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o2.getName().compareTo(o1.getName());
                 }
                 if(o1.getPower() != o2.getPower()){
@@ -111,7 +112,7 @@ public class SortButtons {
                 if(o1.getCapacity() != o2.getCapacity()){
                     return Double.compare(o1.getCapacity(), o2.getCapacity());
                 }
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o1.getName().compareTo(o2.getName());
                 }
                 if(o1.getPower() != o2.getPower()){
@@ -136,7 +137,7 @@ public class SortButtons {
                 if(o1.getCapacity() != o2.getCapacity()){
                     return Double.compare(o2.getCapacity(), o1.getCapacity());
                 }
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o2.getName().compareTo(o1.getName());
                 }
                 if(o1.getPower() != o2.getPower()){
@@ -161,7 +162,7 @@ public class SortButtons {
                 if(o1.getPower() != o2.getPower()){
                     return o1.getPower() - o2.getPower();
                 }
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o1.getName().compareTo(o2.getName());
                 }
 
@@ -186,7 +187,7 @@ public class SortButtons {
                 if(o1.getPower() != o2.getPower()){
                     return o2.getPower() - o1.getPower();
                 }
-                if(o1.getName() != o2.getName()){
+                if(!Objects.equals(o1.getName(), o2.getName())){
                     return o2.getName().compareTo(o1.getName());
                 }
 

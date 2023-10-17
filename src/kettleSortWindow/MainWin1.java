@@ -5,13 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
+import java.util.Vector;
 
 
 public class MainWin1 extends JFrame{
     HashSet<Kettle> kettles2 = new HashSet<>();
-
-
-
     public HashSet<Kettle> getKettles2() {
         return kettles2;
     }
@@ -21,15 +19,9 @@ public class MainWin1 extends JFrame{
     private JRadioButtonMenuItem a1 = new JRadioButtonMenuItem("По объему");
     private JRadioButtonMenuItem a2 = new JRadioButtonMenuItem("По мощности");
     private JRadioButtonMenuItem a3 = new JRadioButtonMenuItem("По материалу");
-    private JRadioButtonMenuItem a4 = new JRadioButtonMenuItem("По цене");
-    private JRadioButtonMenuItem a7 = new JRadioButtonMenuItem("По объему");
-    private JRadioButtonMenuItem a8 = new JRadioButtonMenuItem("По весу");
-    private JRadioButtonMenuItem a9 = new JRadioButtonMenuItem("По материалу");
-    private JRadioButtonMenuItem a10 = new JRadioButtonMenuItem("По цене");
-    private JRadioButton radio1 = new JRadioButton("Электрочайник");
-    private JRadioButton radio2 = new JRadioButton("Заварочный чайник");
-    private JRadioButton radio8 = new JRadioButton("По возрастанию");
-    private JRadioButton radio9 = new JRadioButton("По убыванию");
+    private JRadioButtonMenuItem a4 = new JRadioButtonMenuItem("По бренду");
+    private JRadioButtonMenuItem a5 = new JRadioButtonMenuItem("По возрастанию");
+    private JRadioButtonMenuItem a6 = new JRadioButtonMenuItem("По убыванию");
 
     public MainWin1(HashSet<Kettle> kettle){
         super("Вид чайника");
@@ -40,7 +32,7 @@ public class MainWin1 extends JFrame{
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(5,2,2,2));
         JMenuBar m1 = new JMenuBar();
-        JMenu menu = new JMenu("Электрический");
+        JMenu menu = new JMenu("Группировка");
         menu.add(a1);
         menu.add(a2);
         menu.add(a3);
@@ -51,32 +43,20 @@ public class MainWin1 extends JFrame{
         bg.add(a2);
         bg.add(a3);
         bg.add(a4);
-        JMenu menu1 = new JMenu("Заварочный");
-        menu1.add(a7);
-        menu1.add(a8);
-        menu1.add(a9);
-        menu1.add(a10);
+        JMenu menu1 = new JMenu("Сортировка");
+        menu1.add(a5);
+        menu1.add(a6);
         ButtonGroup bg1 = new ButtonGroup();
-        bg1.add(a7);
-        bg1.add(a8);
-        bg1.add(a9);
-        bg1.add(a10);
+        bg1.add(a5);
+        bg1.add(a6);
         m1.add(menu1);
         setJMenuBar(m1);
         setSize(400,400);
 
-        ButtonGroup group = new ButtonGroup();
-        group.add(radio1);
-        group.add(radio2);
-        container.add(radio1);
-        radio1.setSelected(true);
-        container.add(radio2);
-        ButtonGroup group2 = new ButtonGroup();
-        group2.add(radio8);
-        group2.add(radio9);
-        container.add(radio8);
-        radio8.setSelected(true);
-        container.add(radio9);
+        Vector<String> items2 = new Vector<>();
+        for(Kettle k : kettles2) items2.add(k.toString());
+        JList<String> list2 = new JList<>(items2);
+        container.add(new JScrollPane(list2));
         button.addActionListener(new ButtonEventListener());
         container.add(button);
         setVisible(true);
@@ -87,8 +67,8 @@ public class MainWin1 extends JFrame{
         String message = "";
 
         public void actionPerformed(ActionEvent e) {
-            boolean typeOfKettle = radio1.isSelected();
-            boolean directionOfSelection = radio8.isSelected();
+            boolean typeOfKettle = a1.isSelected();
+            boolean directionOfSelection = a5.isSelected();
             if(typeOfKettle){
                 if(directionOfSelection){
                     if(a1.isSelected()){
@@ -101,7 +81,7 @@ public class MainWin1 extends JFrame{
             }
 
             message += "Button pressed\n";
-            //message += getKettles2().toString();
+            message += getKettles2().toString();
 
             JOptionPane.showMessageDialog(null, message, "Output", JOptionPane.PLAIN_MESSAGE);
         }

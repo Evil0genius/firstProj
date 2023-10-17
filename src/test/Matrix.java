@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Arrays;
+
 public class Matrix implements IMatrix {
 
     private double[][] nums;
@@ -97,7 +99,9 @@ public class Matrix implements IMatrix {
         Matrix result = new Matrix(this.getRows(), this.getColumns());
         for (int i = 0; i < result.getRows(); i++) {
             for (int j = 0; j < result.getColumns(); j++) {
-                result.setValueAt(i, j, this.getValueAt(i, j) * value);
+                if(this.getValueAt(i, j) == 0){
+                    result.setValueAt(i, j, Math.abs(this.getValueAt(i, j) * value));
+                }else result.setValueAt(i, j, this.getValueAt(i, j) * value);
             }
         }
         return result;
@@ -144,6 +148,7 @@ public class Matrix implements IMatrix {
         return result;
     }
 
+
     private double[][] createSubMatrix(double[][] matrix, int rowToRemove, int colToRemove) {
         int n = matrix.length;
         double[][] subMatrix = new double[n - 1][n - 1];
@@ -188,11 +193,22 @@ public class Matrix implements IMatrix {
                         return false;
                     } else if (i != j && this.getValueAt(i, j) != 0) {
                         return false;
-                    }
-
+                    }else return true;
                 }
             }
+        }else return false;
+        return false;
+    }
 
+    public boolean isIdentityMatrix2() {
+        for(int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
+                if (i == j && this.getValueAt(i, j) != 1) {
+                    return false;
+                } else if (i != j && this.getValueAt(i,j) != 0) {
+                    return  false;
+                }
+            }
         }
         return true;
     }
@@ -200,11 +216,7 @@ public class Matrix implements IMatrix {
 
     @Override
     public boolean isSquareMatrix() {
-        if (this.getRows() != this.getColumns()) {
-
-            return false;
-        }
-        return true;
+        return this.getRows() == this.getColumns();
     }
 
     @Override
@@ -217,5 +229,20 @@ public class Matrix implements IMatrix {
             System.out.print("\n");
         }
         System.out.println();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Matrix matrix = (Matrix) o;
+
+        return Arrays.deepEquals(nums, matrix.nums);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(nums);
     }
 }
